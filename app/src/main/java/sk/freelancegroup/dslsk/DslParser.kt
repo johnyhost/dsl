@@ -42,6 +42,17 @@ object DslParser {
     // ---------------------------------------------------------------- news list
 
     fun parseFeed(doc: Document, today: LocalDate = LocalDate.now(ZONE)): FeedPage {
+        // Known layout (2026): the home page lists news in div#news_box; the older-news
+        // pages list them in div#body (left column = "Top" sidebars, div#map = HOT STORY).
+        val scopes = listOfNotNull(doc.selectFirst("#news_box"), doc.selectFirst("#body"), doc.body())
+        for (scope in scopes) {
+            val items = collectItems(scope, today)
+            if (items.isNotEmpty() || scope === scopes.last()) return FeedPage(items, findNextUrl(doc))
+        }
+        return FeedPage(emptyList(), findNextUrl(doc))
+    }
+
+    private fun collectItems(scope: Element, today: LocalDate): List<FeedItem> {
         val idCache = IdentityHashMap<Element, Set<Int>>()
 
         // Every textual link to an article is a candidate; one article can appear
@@ -49,7 +60,8 @@ object DslParser {
         data class Candidate(val order: Int, val item: FeedItem, val richness: Int)
         val best = LinkedHashMap<Int, Candidate>()
         var order = 0
-        for (a in doc.select("a[href*=article.php]")) {
+        for (a in scope.select("a[href*=article.php]")) {
+            if (a.closest("#map") != null) continue
             val href = a.attr("href")
             val id = articleIdOf(href) ?: continue
             if (isDiscussionLink(a)) continue
@@ -76,22 +88,41 @@ object DslParser {
         }
 
         var items = best.values.sortedBy { it.order }.map { it.item }
-        items = dropStaleFeatured(items)
+        items = dropSidebarLeftovers(items)
         // Newest first; undated items keep their place next to their neighbours.
         var lastDate = Long.MAX_VALUE
         val keyed = items.map { item -> (item.publishedAt ?: lastDate).also { lastDate = it } to item }
-        items = keyed.sortedByDescending { it.first }.map { it.second }
-
-        return FeedPage(items, findNextUrl(doc))
+        return keyed.sortedByDescending { it.first }.map { it.second }
     }
 
-    /** The home page mixes the newest news with old "Top"/lead stories; drop the old ones. */
-    private fun dropStaleFeatured(items: List<FeedItem>): List<FeedItem> {
-        val dates = items.mapNotNull { it.publishedAt }.sorted()
-        if (dates.size < 5) return items
-        val median = dates[dates.size / 2]
-        val cutoff = median - 10L * 24 * 3600 * 1000
-        return items.filter { it.publishedAt == null || it.publishedAt >= cutoff }
+    /**
+     * Safety net for when the page had to be scanned as a whole: real list entries
+     * carry a date, sidebar links don't, and featured blocks can be months old.
+     */
+    private fun dropSidebarLeftovers(items: List<FeedItem>): List<FeedItem> {
+        val dated = items.mapNotNull { it.publishedAt }
+        if (dated.size < 5) return items
+        val cutoff = dated.max() - 21L * 24 * 3600 * 1000
+        return items.filter { it.publishedAt != null && it.publishedAt >= cutoff }
+    }
+
+    /**
+     * The home page news box has no perexes. The same news, with perexes, sit on
+     * index_news.php one page "above" the home page's "Staršie správy" link.
+     */
+    fun detailedFirstPageUrl(home: FeedPage): String? {
+        val next = home.nextUrl ?: return null
+        val n = Regex("""page=(\d+)""").find(next)?.groupValues?.get(1)?.toIntOrNull() ?: return null
+        return next.replace("page=$n", "page=${n + 10}")
+    }
+
+    /** Fills in missing perexes on [home] from [detailed], matching by article id. */
+    fun mergePerex(home: FeedPage, detailed: FeedPage): FeedPage {
+        val byId = detailed.items.associateBy { it.id }
+        return home.copy(items = home.items.map { item ->
+            val d = byId[item.id]
+            if (item.perex == null && d?.perex != null) item.copy(perex = d.perex) else item
+        })
     }
 
     private fun findNextUrl(doc: Document): String? {
@@ -223,7 +254,7 @@ object DslParser {
             .firstOrNull { it.length < 100 && DATE_FULL.containsMatchIn(it) }
             ?: findByline(doc)
 
-        val perex = perexEls.map { clean(it.text()) }
+        var perex = perexEls.map { clean(it.text()) }
             .filter { it.length >= 60 && it != byline }
             .maxByOrNull { it.length }
             ?: meta(doc, "og:description")?.takeIf { it.length >= 40 }
@@ -236,7 +267,20 @@ object DslParser {
             bodyEls = listOfNotNull(guessBody(doc))
         }
         val body = cleanBody(bodyEls, doc.location().ifEmpty { url }, perex)
-        val bodyText = Jsoup.parse(body).text()
+        val bodyDoc = Jsoup.parseBodyFragment(body)
+        val bodyText = bodyDoc.text()
+
+        // dsl.sk articles have no separate perex: the list's perex (and og:description)
+        // is the opening of the first paragraph. Show that paragraph as the lead instead.
+        var leadInBody = false
+        val firstPara = bodyDoc.body().children().firstOrNull()?.takeIf { it.tagName() == "p" }?.let { clean(it.text()) }
+        if (perex != null && firstPara != null) {
+            val k = minOf(40, perex.length, firstPara.length)
+            if (k >= 20 && perex.take(k) == firstPara.take(k)) {
+                perex = null
+                leadInBody = true
+            }
+        }
 
         return Article(
             id = id,
@@ -247,11 +291,12 @@ object DslParser {
             perex = perex,
             bodyHtml = body,
             bodyTextLength = bodyText.length,
+            leadInBody = leadInBody,
         )
     }
 
     private fun articleTitle(doc: Document): String {
-        val raw = doc.selectFirst(".article_title")?.text()
+        val raw = doc.selectFirst(".article_title, .page_title")?.text()
             ?: meta(doc, "og:title")
             ?: doc.title()
         return clean(raw)
@@ -338,7 +383,7 @@ object DslParser {
         .addTags(
             "a", "b", "strong", "i", "em", "u", "s", "sub", "sup", "br", "p", "h3", "h4",
             "blockquote", "ul", "ol", "li", "img", "figure", "figcaption", "table", "thead",
-            "tbody", "tr", "td", "th", "pre", "code", "hr", "div", "span",
+            "tbody", "tr", "td", "th", "pre", "code", "hr", "div", "span", "small",
         )
         .addAttributes("a", "href", "class")
         .addAttributes("img", "src", "alt")

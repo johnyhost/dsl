@@ -33,9 +33,17 @@ class LiveSiteTest {
 
         val home = Http.getDocument(DslParser.HOME)
         File(out, "home.skeleton.txt").writeText(skeleton(home))
-        val page1 = DslParser.parseFeed(home)
-        line("\n== Home page: ${page1.items.size} items, next=${page1.nextUrl}")
-        page1.items.forEach { line(describe(it)) }
+        val homePage = DslParser.parseFeed(home)
+        line("\n== Home page: ${homePage.items.size} items, next=${homePage.nextUrl}")
+        homePage.items.forEach { line(describe(it)) }
+
+        // Same as FeedRepository.fetchPage: borrow perexes from the detailed listing.
+        val detailedUrl = DslParser.detailedFirstPageUrl(homePage)
+        val detailed = detailedUrl?.let { DslParser.parseFeed(Http.getDocument(it)) }
+        val page1 = if (detailed != null) DslParser.mergePerex(homePage, detailed) else homePage
+        line("\n== Detailed first page $detailedUrl: ${detailed?.items?.size} items " +
+            "(${detailed?.items?.map { it.id }}); home items with perex after merge: " +
+            "${page1.items.count { it.perex != null }}/${page1.items.size}")
 
         var page2: FeedPage? = null
         page1.nextUrl?.let { next ->
@@ -55,7 +63,7 @@ class LiveSiteTest {
                 line("title:  ${a.title}")
                 line("byline: ${a.byline}")
                 line("tags:   ${a.tags}")
-                line("perex:  ${a.perex?.take(60)}… (${a.perex?.length ?: 0} chars)")
+                line("perex:  ${a.perex?.take(60)}… (${a.perex?.length ?: 0} chars), leadInBody=${a.leadInBody}")
                 line("body:   ${a.bodyTextLength} chars, <p>=${a.bodyHtml.split("<p>").size - 1}, " +
                     "figures=${a.bodyHtml.split("<figure").size - 1}, videos=${a.bodyHtml.split("class=\"video\"").size - 1}")
             }

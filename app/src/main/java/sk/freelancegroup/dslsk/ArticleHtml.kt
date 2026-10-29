@@ -42,6 +42,8 @@ object ArticleHtml {
                border-radius: 12px; background: $chip; color: $muted; }
   .perex { font-weight: 600; font-size: 18px; line-height: 1.55; margin: 0 0 18px; }
   .body p { margin: 0 0 1em; }
+  .lead > p:first-child { font-weight: 600; font-size: 18px; line-height: 1.55; }
+  small { display: block; color: $muted; font-size: 13px; line-height: 1.45; text-align: center; margin-top: 6px; }
   .body p > b:only-child, .body h3, .body h4 { display: block; font-size: 19px; line-height: 1.3; margin-top: 1.4em; }
   a { color: $accent; }
   img { max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 8px; }
@@ -70,7 +72,7 @@ $byline
 <h1>${esc(article.title)}</h1>
 $tags
 $perex
-<div class="body">${article.bodyHtml}</div>
+<div class="body${if (article.leadInBody) " lead" else ""}">${article.bodyHtml}</div>
 $discussion
 </body></html>
 """

@@ -35,7 +35,7 @@ object FeedRepository {
     private fun load(url: String, replace: Boolean, done: (Result<Int>) -> Unit) {
         loading = true
         val gen = generation
-        Async.run({ DslParser.parseFeed(Http.getDocument(url)) }) { result ->
+        Async.run({ fetchPage(url, isHome = replace) }) { result ->
             if (gen != generation) return@run // superseded by a newer refresh
             loading = false
             result.onSuccess { page ->
@@ -50,5 +50,15 @@ object FeedRepository {
             }
             done(result.map { it.items.size })
         }
+    }
+
+    /** Runs on a background thread. */
+    fun fetchPage(url: String, isHome: Boolean): FeedPage {
+        val page = DslParser.parseFeed(Http.getDocument(url))
+        if (!isHome || page.items.all { it.perex != null }) return page
+        // The home page's news box has no perexes; borrow them from the detailed listing.
+        val detailedUrl = DslParser.detailedFirstPageUrl(page) ?: return page
+        val detailed = runCatching { DslParser.parseFeed(Http.getDocument(detailedUrl)) }.getOrNull() ?: return page
+        return DslParser.mergePerex(page, detailed)
     }
 }

@@ -28,49 +28,56 @@ class DslParserTest {
     }
 
     @Test
-    fun homePage_keepsNewsDropsOldFeatured_andDecodesWindows1250() {
+    fun homePage_readsNewsBoxOnly_andDecodesWindows1250() {
         val page = DslParser.parseFeed(load("home.html", DslParser.HOME), today)
-        assertEquals(listOf(34002, 34000, 33998, 33996, 33994), page.items.map { it.id })
+        // Sidebars ("Top články/správy"), the pinned old article and HOT STORY are ignored.
+        assertEquals(listOf(34002, 34000, 33998, 33996, 33994, 33980), page.items.map { it.id })
         val first = page.items[0]
         assertEquals("28.10.2026 19:35", fmt(first.publishedAt))
-        assertEquals(6, first.comments)
-        assertTrue(first.perex!!.startsWith("Spoločnosť Apple"))
+        assertEquals(10, first.comments)
         assertTrue(first.title.contains("dotykový"))
+        assertEquals(null, page.items.last().comments)
         assertEquals("https://www.dsl.sk/index_news.php?page=31092", page.nextUrl)
+        assertEquals("https://www.dsl.sk/index_news.php?page=31102", DslParser.detailedFirstPageUrl(page))
     }
 
     @Test
     fun newsPage_usesPublicationDateNotLastCommentDate() {
-        val page = DslParser.parseFeed(load("news.html", "https://www.dsl.sk/index_news.php"), today)
+        val page = DslParser.parseFeed(load("news.html", "https://www.dsl.sk/index_news.php?page=31092"), today)
         assertEquals(listOf(33982, 33978), page.items.map { it.id })
         assertEquals("26.10.2026 09:43", fmt(page.items[0].publishedAt))
         assertEquals(5, page.items[0].comments)
+        assertTrue(page.items[0].perex!!.startsWith("Sprístupňovanie"))
         assertTrue(page.items[1].perex!!.startsWith("Nový kompresný"))
-        assertEquals("https://dsl.sk/index_news.php?page=31082", page.nextUrl)
+        assertEquals("https://www.dsl.sk/index_news.php?page=31082", page.nextUrl)
     }
 
     @Test
-    fun divLayout_isAlsoUnderstood() {
-        val page = DslParser.parseFeed(load("news_divs.html", "https://www.dsl.sk/index_news.php?page=31082"), today)
-        assertEquals(2, page.items.size)
-        assertEquals(27, page.items[0].comments)
-        assertEquals("25.10.2026 12:01", fmt(page.items[0].publishedAt))
-        assertEquals("https://www.dsl.sk/index_news.php?page=31070", page.nextUrl)
+    fun mergePerex_fillsHomeItemsFromDetailedPage() {
+        val home = FeedPage(listOf(FeedItem(1, "Titulok jeden", "u1", null, 1L, 3)), null)
+        val detailed = FeedPage(listOf(FeedItem(1, "Titulok jeden", "u1", "Perex jeden", 1L, 3)), null)
+        assertEquals("Perex jeden", DslParser.mergePerex(home, detailed).items[0].perex)
     }
 
     @Test
     fun article_withKnownClasses() {
         val url = "https://www.dsl.sk/article.php?article=33996"
         val a = DslParser.parseArticle(load("article.html", url), url)
+        assertEquals("Budovanie AI zvýšilo záujem aj o magnetické pásky, významný výrobca späťnásobí výrobu", a.title)
         assertEquals("DSL.sk, 28.10.2026", a.byline)
         assertEquals(listOf("AI", "úložiská"), a.tags)
-        assertTrue(a.perex!!.startsWith("Dopyt po magnetických"))
+        // og:description repeats the first paragraph, so it becomes the lead instead.
+        assertEquals(null, a.perex)
+        assertTrue(a.leadInBody)
+        assertTrue(a.bodyHtml.startsWith("<p>Dopyt po magnetických"))
         assertFalse(a.bodyHtml.contains("<script"))
         assertTrue(a.bodyHtml.contains("<figure>"))
         assertTrue(a.bodyHtml.contains("https://www.dsl.sk/images/clanky/fuji.jpg"))
         assertTrue(a.bodyHtml.contains("i.ytimg.com/vi/AbCdEf12345"))
+        assertTrue(a.bodyHtml.contains("<small>Predstavenie"))
+        assertFalse(a.bodyHtml.contains("Najnovšie"))
         assertFalse(a.bodyHtml.contains("Odpoveda"))
-        assertTrue(a.bodyHtml.split("<p>").size >= 5)
+        assertTrue(a.bodyHtml.split("<p>").size >= 6)
     }
 
     @Test

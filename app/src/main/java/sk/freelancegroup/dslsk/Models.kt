@@ -29,6 +29,8 @@ data class Article(
     val bodyHtml: String,
     /** Plain-text length of [bodyHtml]; used to decide whether parsing worked. */
     val bodyTextLength: Int,
+    /** True when the first body paragraph doubles as the perex (styled as the lead). */
+    val leadInBody: Boolean = false,
 )
 
 /** "1 komentár", "3 komentáre", "7 komentárov". */
