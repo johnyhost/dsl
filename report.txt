@@ -1,0 +1,51 @@
+GET https://www.dsl.sk/ -> 200 Content-Type: text/html; charset=windows-1250 (final https://www.dsl.sk/)
+
+== Home page: 10 items, next=https://www.dsl.sk/index_news.php?page=31095
+  [34006] 2026-10-29T08:53:00Z c=- | Ministerstvo zahraničia kvôli bezpečnosti odstavilo web | perex=0 chars
+  [34004] 2026-10-29T08:22:00Z c=4 | NASA dnes inštaluje na ISS nové solárne panely | perex=0 chars
+  [34002] 2026-10-28T18:35:00Z c=10 | Apple uviedla MacBook Pro s OLED displejom, je dotykový a drahý | perex=0 chars
+  [34000] 2026-10-28T10:42:00Z c=34 | Hra Grand Theft Auto VI bude vyžadovať stiahnutie 210 GB | perex=0 chars
+  [33998] 2026-10-28T10:08:00Z c=13 | Na novej Gold Easy sa po minutí 100 GB dáta zastavia | perex=0 chars
+  [33996] 2026-10-28T08:43:00Z c=12 | Budovanie AI zvýšilo záujem aj o magnetické pásky, významný výrobca späťnásobí výrobu | perex=0 chars
+  [33994] 2026-10-27T15:35:00Z c=27 | Na Slovensku pribudne takmer polgigawatthodinové batériové úložisko | perex=0 chars
+  [33992] 2026-10-27T10:05:00Z c=6 | Počet .sk domén dosiahol 500-tisíc | perex=0 chars
+  [33990] 2026-10-27T08:44:00Z c=37 | Alza spustila doručovanie liekov na predpis do AlzaBoxov, podľa lekárnikov porušuje zákon | perex=0 chars
+  [33980] 2026-10-27T08:27:00Z c=- | Intel pripravuje nový enkóder SVT-AV2 pre nový formát videa AV2 | perex=0 chars
+
+== Detailed first page https://www.dsl.sk/index_news.php?page=31105: 10 items ([34006, 34004, 34002, 34000, 33998, 33996, 33994, 33992, 33990, 33980]); home items with perex after merge: 10/10
+
+== https://www.dsl.sk/index_news.php?page=31095: 10 items, next=https://www.dsl.sk/index_news.php?page=31084
+  [33988] 2026-10-26T15:19:00Z c=12 | 4ka upgraduje sieť, v noci môže prichádzať k výpadkom | perex=185 chars
+  [33984] 2026-10-26T12:00:00Z c=9 | Reálne zneužívanie zraniteľností v PHP potvrdené až v sobotu, napriek mediálnemu chaosu | perex=193 chars
+  [33982] 2026-10-26T08:43:00Z c=5 | Windows 11 26H2 je už k dispozícii pre všetky PC spĺňajúce požiadavky | perex=186 chars
+  [33978] 2026-10-26T08:09:00Z c=10 | YouTube začne používať novú kompresiu videa AV2 na začiatku budúceho roka | perex=165 chars
+  [33976] 2026-10-25T11:01:00Z c=27 | K plošnému výpadku elektriny na Srí Lanke prispela fotovoltaika, krajina chystá veľké batérie | perex=179 chars
+  [33974] 2026-10-24T09:34:00Z c=26 | Samojazdiace autá sa majú identifikovať modrozelenými svetlami | perex=149 chars
+  [33972] 2026-10-23T11:30:00Z c=50 | Pristátie na Mesiaci má vyžadovať až 22 dotankovacích letov Starship | perex=187 chars
+  [33970] 2026-10-23T09:56:00Z c=19 | O2 výrazne zdražuje služby aj existujúcim zákazníkom, aj o desiatky percent | perex=185 chars
+  [33968] 2026-10-23T09:05:00Z c=6 | Google financuje 1 GW "virtuálnu elektráreň" | perex=62 chars
+  [33966] 2026-10-23T07:23:00Z c=7 | Ďalšie veľké časti Kanady zostávajú trvalo na letnom čase, vyžaduje to aktualizáciu smartfónov | perex=184 chars
+
+== Article https://www.dsl.sk/article.php?article=34006
+title:  Ministerstvo zahraničia kvôli bezpečnosti odstavilo web
+byline: DSL.sk, 29.10.2026
+tags:   [Slovensko, e-government, bezpečnosť]
+perex:  null… (0 chars), leadInBody=true
+body:   1211 chars, <p>=6, figures=0, videos=0
+comments: 0 (listed 0), depths=[], with author=0, date=0, score=0, empty text=0, add link=true
+
+== Article https://www.dsl.sk/article.php?article=34004
+title:  NASA dnes inštaluje na ISS nové solárne panely
+byline: DSL.sk, 29.10.2026
+tags:   [ISS, vesmír, NASA]
+perex:  null… (0 chars), leadInBody=true
+body:   1995 chars, <p>=9, figures=0, videos=0
+comments: 4 (listed 4), depths=[0, 1, 2, 0], with author=3, date=4, score=0, empty text=0, add link=true
+
+== Article https://www.dsl.sk/article.php?article=34002
+title:  Apple uviedla MacBook Pro s OLED displejom, je dotykový a drahý
+byline: DSL.sk, 28.10.2026
+tags:   [Apple, MacBook]
+perex:  null… (0 chars), leadInBody=true
+body:   1473 chars, <p>=10, figures=0, videos=1
+comments: 10 (listed 10), depths=[0, 1, 1, 2, 1, 0, 0, 0, 0, 0], with author=10, date=10, score=6, empty text=0, add link=true

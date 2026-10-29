@@ -1,0 +1,505 @@
+<#root>
+  <html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+      <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+      <meta http-equiv="cache-control" content="no-cache">
+      <meta name="description" content="[189 chars]">
+      <title>
+        ~"aaa.aa - aaaa aaaa aaaaaaaaa aa aaa aaaa aaaaaaa aaaaaa"
+      <meta property="og:title" content="DSL.sk - NASA dnes inštaluje na ISS nové solárne panely">
+      <meta property="og:description" content="[189 chars]">
+      <meta property="og:url" content="http://www.dsl.sk/article.php?article=34004">
+      <meta property="og:image" content="http://www.dsl.sk/images/articles/2016-12-31-iss-1.jpg">
+      <meta property="og:site_name" content="DSL.sk">
+      <meta property="og:type" content="article">
+      <meta property="fb:app_id" content="117577148280650">
+      <meta property="fb:admins" content="815543179">
+      <link href="http://www.dsl.sk/export/rss_articles.php">
+      <link href="/css/default_27.css">
+      <link href="css/prettyPhoto.css" charset="utf-8">
+      <script src="js/jquery-1.6.1.min.js" charset="utf-8">
+      <script src="js/jquery.prettyPhoto.js" charset="utf-8">
+      <style>
+      <link href="http://www.dsl.sk/article_microsummary.php?id=34004">
+      <script>
+      <script src="/js/cookieconsent.latest.min.js">
+    <body>
+      <table>
+        <tbody>
+          <tr>
+            <td valign="top">
+              <div id="bg">
+                <div id="header">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td align="right" rowspan="2">
+                          <a href="https://www.dsl.sk/index.php">
+                            <img src="/images/design/DSL_9.png" width="310">
+                          <br>
+                          <img width="280" src="/images/small_logo.gif">
+                        <td valign="middle" colspan="4" class="top_link" align="left" width="200">
+                        <td class="header_info_text" valign="top" align="right" width="270">
+                          "Za poslednú hodinu: 80 meraní"
+                      <tr>
+                        <td colspan="5" valign="bottom" align="right" width="474">
+                          <font class="header_info_text">
+                            "inzercia"
+                          <br>
+                          <table width="474">
+                            <tbody>
+                              <tr>
+                                <td>
+                <div id="title_bar">
+                  <table width="100%" style="background-color: #ff;">
+                    <tbody>
+                      <tr>
+                        <td style="background-color: transparent;">
+                          <a href="http://www.dsl.sk/export/rss_articles.php">
+                            <img src="/images/design/rss.gif" width="37">
+                          <img src="/images/design/x.gif" width="15">
+                          "neprihlásený"
+                          <a href="/user.php?action=login">
+                            <img src="/images/design/log_in.png" width="12">
+                        <td style="background-color: transparent;" align="right">
+                          ~"aaaaaaa, 29. aaaaaaa 2026, aaaa aa aaaaaa"
+                          <b>
+                            "Klára"
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td rowspan="2" valign="top" width="165" align="left" style="background: url(/images/design/menu_bg.gif) repeat right;">
+                        <div id="menu">
+                          <div style="position: relative; color: #000000; font-weight: bold; font-family: Verdana; padding-top: 2px; padding-bottom: 2px; padd">
+                            "DSL pripojenie"
+                          <div style="margin-top: -1px;">
+                            <div style="border: 1px solid #0060D0; background: #C0D0FF; padding-bottom: 6px;">
+                              <table width="160">
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2" valign="top" class="menu_line">
+                                      <a href="https://www.dsl.sk/prices.php" class="menu_line">
+                                        "Ceny DSL"
+                                  <tr>
+                                    <td colspan="2" class="menu_line">
+                                      <a href="https://www.dsl.sk/availability.php" class="menu_line">
+                                        "Dostupnosť DSL"
+                                  <tr>
+                                    <td colspan="2" class="menu_line">
+                                      <a href="https://www.dsl.sk/forum.php" class="menu_line">
+                                        "Fórum o DSL"
+                                  <tr>
+                                    <td colspan="2" class="menu_line">
+                                      <a href="https://www.dsl.sk/stats.php" class="menu_line">
+                                        "Výsledky meraní"
+                          <div style="margin-top: 8px;">
+                            <div style="border: 1px solid #303030; background: #C0D0FF; padding-bottom: 4px;">
+                              <table width="160">
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2" class="menu_line">
+                                      <a href="https://www.dsl.sk/map/index.php" class="menu_line">
+                                        "Satelitná mapa SR"
+                          <div style="margin-top: 12px; position: relative; color: #000000; font-weight: bold; font-family: Verdana; padding-top: 2px; padding">
+                            "Merače"
+                          <div style="margin-top: -1px;">
+                            <div style="border: 1px solid #303030; background: #D0D0D0; padding-bottom: 6px;">
+                              <table width="160">
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2" class="menu_line">
+                                      <a href="https://www.dsl.sk/speedmeter.php" class="menu_line">
+                                        "Speedmeter"
+                                      <a class="menu_line" style="font-size: 7pt;" href="https://www.dsl.sk/speedmeter_history.php">
+                                        "Merania"
+                                  <tr>
+                                    <td colspan="2" class="menu_line">
+                                      <a href="https://www.dsl.sk/pingmeter.php" class="menu_line">
+                                        "Pingmeter"
+                                  <tr>
+                                    <td colspan="2" valign="top" class="menu_line">
+                                      <a href="https://www.dsl.sk/googlemeter.php" class="menu_line">
+                                        "Googlemeter"
+                          <div style="margin-top: 12px; position: relative; color: #000000; font-weight: bold; font-family: Verdana; padding-top: 2px; padding">
+                            "Hľadanie"
+                          <div style="margin-top: -1px;">
+                            <div style="border: 1px solid #10d010; background: #D0FFB0; padding-top: 10px; padding-left: 6px; padding-right: 6px; padding-bottom">
+                              <form style="display: inline;">
+                                <input name="action">
+                                <input name="keyword" style="width: 130px; font-size: 8pt;">
+                                <input name="submit" style="width: 24px; font-size: 8pt;">
+                          <div style="margin-top: 12px; position: relative; color: #000000; font-weight: bold; font-family: Verdana; padding-top: 2px; padding">
+                            "Top články"
+                          <div style="margin-top: -1px;">
+                            <div style="border: 1px solid #d01010; background: #FFD0B0; padding-bottom: 6px;">
+                              <table width="160">
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33601&title=" class="article_menu_line">
+                                        [88 chars]
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33051&title=" class="article_menu_line">
+                                        ~"aa aaaaaaaaa aa a aaaaaaaa aaaaaa aaaa a aaaaaaaaaa a aaaa, aa 31. aaaa"
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33163&title=" class="article_menu_line">
+                                        ~"aaaaaa aa aaaaaaaa aa aaa a a2, aaaaaa 2.5 aaaa aaaaaaaaaa"
+                          <div style="margin-top: 12px; position: relative; color: #000000; font-weight: bold; font-family: Verdana; padding-top: 2px; padding">
+                            "Top správy"
+                          <div style="margin-top: -1px;">
+                            <div style="border: 1px solid #10d010; background: #D0FFB0; padding-bottom: 6px;">
+                              <table width="160">
+                                <tbody>
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33990&title=" class="article_menu_line">
+                                        [89 chars]
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33976&title=" class="article_menu_line">
+                                        [93 chars]
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33984&title=" class="article_menu_line">
+                                        [87 chars]
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33994&title=" class="article_menu_line">
+                                        ~"aa aaaaaaaaa aaaaaaaa aaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaa aaaaaaaa"
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33982&title=" class="article_menu_line">
+                                        ~"aaaaaaa 11 26a2 aa aa a aaaaaaaaaa aaa aaaaaa aa aaaaaaaaa aaaaaaaaaa"
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33988&title=" class="article_menu_line">
+                                        ~"4aa aaaaaaaaa aaaa, a aaaa aaaa aaaaaaaaaa a aaaaaaaa"
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=34000&title=" class="article_menu_line">
+                                        ~"aaa aaaaa aaaaa aaaa aa aaaa aaaaaaaaa aaaaaaaaaa 210 aa"
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33978&title=" class="article_menu_line">
+                                        ~"aaaaaaa aaaaa aaaaaaaa aaaa aaaaaaaaa aaaaa aa2 aa aaaaaaaa aaaaaaaa aaaa"
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33992&title=" class="article_menu_line">
+                                        ~"aaaaa .aa aaaaa aaaaaaaa 500-aaaaa"
+                                  <tr>
+                                    <td colspan="2" valign="top" class="article_menu_line">
+                                      <a href="https://www.dsl.sk/article.php?article=33996&title=" class="article_menu_line">
+                                        [85 chars]
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                          <br>
+                      <td valign="top">
+                        <div id="body">
+                          <font class="page_title">
+                            ~"aaaa aaaa aaaaaaaaa aa aaa aaaa aaaaaaa aaaaaa"
+                          <br>
+                          <br>
+                          <script>
+                          <span class="tags_label" id="tags_label">
+                            "Značky:"
+                          <span class="tag_empty">
+                            <span id="tag_404" class="tag_unselected">
+                              <a href="articles.php?tags=404" id="tag_link_404" class="tag_unselected">
+                                "ISS"
+                              <span id="tag_sel_404" class="tag_sel_unselected">
+                          <wbr>
+                          <span class="tag_empty">
+                            <span id="tag_114" class="tag_unselected">
+                              <a href="articles.php?tags=114" id="tag_link_114" class="tag_unselected">
+                                "vesmír"
+                              <span id="tag_sel_114" class="tag_sel_unselected">
+                          <wbr>
+                          <span class="tag_empty">
+                            <span id="tag_154" class="tag_unselected">
+                              <a href="articles.php?tags=154" id="tag_link_154" class="tag_unselected">
+                                "NASA"
+                              <span id="tag_sel_154" class="tag_sel_unselected">
+                          <wbr>
+                          <br>
+                          <br>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td width="220" align="left">
+                                  <font class="article_perex">
+                                    "DSL.sk, 29.10.2026"
+                                  <img src="images/article_perex.gif" style="margin-top: 4px;" width="200">
+                                <td width="360" align="right">
+                          <br>
+                          <br>
+                          <table align="right" style="height: 255px; width: 255px; margin-right: 12px;">
+                            <tbody>
+                              <tr>
+                                <td align="right">
+                          <font class="article_body">
+                            [139 chars]
+                            <br>
+                            <br>
+                            "NASA o tom informuje v"
+                            <a href="https://www.nasa.gov/blogs/spacestation/2026/10/28/astronauts-are-go-for-thursdays-power-upgrade-spacewalk/">
+                              "tomto oznámení"
+                            [146 chars]
+                            <br>
+                            <br>
+                            [170 chars]
+                            <br>
+                            <br>
+                            [251 chars]
+                            <br>
+                            <br>
+                            <p align="center">
+                              <a class="img1" href="/images/articles/2016-12-31-iss-1.jpg">
+                                <img class="img2" src="/images/articles/2016-12-31-iss-1s.jpg">
+                              <br>
+                              <small>
+                                [124 chars]
+                            <br>
+                            <br>
+                            [296 chars]
+                            <br>
+                            <br>
+                            [293 chars]
+                            <br>
+                            <br>
+                            [427 chars]
+                            <br>
+                            <br>
+                            [104 chars]
+                          <br>
+                          <br>
+                          <br>
+                          <b>
+                            "Najnovšie články:"
+                          <br>
+                          <br>
+                          <div id="article_menu">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=34006&title=">
+                                      ~"aaaaaaaaaaaa aaaaaaaaaa aaaaa aaaaaaaaaaa aaaaaaaaa aaa"
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=34002&title=">
+                                      ~"aaaaa aaaaaaa aaaaaaa aaa a aaaa aaaaaaaaa, aa aaaaaaaa a aaaaa"
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=34000&title=">
+                                      ~"aaa aaaaa aaaaa aaaa aa aaaa aaaaaaaaa aaaaaaaaaa 210 aa"
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=33998&title=">
+                                      ~"aa aaaaa aaaa aaaa aa aa aaaaaa 100 aa aaaa aaaaaaaa"
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=33996&title=">
+                                      [85 chars]
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=33994&title=">
+                                      ~"aa aaaaaaaaa aaaaaaaa aaaaaa aaaaaaaaaaaaaaaaaaa aaaaaaaaa aaaaaaaa"
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=33992&title=">
+                                      ~"aaaaa .aa aaaaa aaaaaaaa 500-aaaaa"
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=33990&title=">
+                                      [89 chars]
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=33980&title=">
+                                      ~"aaaaa aaaaaaaaaa aaaa aaaaaaa aaa-aa2 aaa aaaa aaaaaa aaaaa aa2"
+                                <tr>
+                                  <td width="8" align="left" valign="top" style="padding-top: 6px;">
+                                    <img align="middle" width="4" src="/images/design/blt.gif">
+                                  <td valign="top">
+                                    <a href="/article.php?article=33988&title=">
+                                      ~"4aa aaaaaaaaa aaaa, a aaaa aaaa aaaaaaaaaa a aaaaaaaa"
+                          <br>
+                          <img id="nxsl" style="position: absolute;top: -10px;left: -10px; width: 0px; height: 0px; visibility: hidden;">
+                          <script>
+                          <script>
+                          <a name="discussion">
+                          <br>
+                          <b>
+                            "Diskusia:"
+                          <br>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="5">
+                                <td width="*">
+                              <tr>
+                                <td colspan="1">
+                                <td colspan="15">
+                                  <div id="fh_1702636" style="padding: 3px;  background-color: #d8d8d8;">
+                                    <a name="fe_1702636">
+                                    <font class="entry_info">
+                                      <b>
+                                        "hmm.. nechcel by som..."
+                                      <br>
+                                      ~"aa aaa.: aaaa_ | aaaaaaa: 29.10.2026 9:25"
+                                      <br>
+                                  <font class="entry_info">
+                                  <br>
+                                  [83 chars]
+                                  <br>
+                                  <div style="valign: middle;">
+                                    <a class="entry_link" style="border-bottom: 0px; color: #808080;" href="article_forum.php?action=reply&forum=286112&entry_id=1702636&url=http%3A%2F%2Fwww.dsl.sk%2Farticle.php%3Farticle%3D34004">
+                                      "Odpovedať"
+                                    <span id="vt_1702636">
+                                      <font class="entry_link" style="color: #808080;">
+                                        "Hodnotiť:"
+                                      <a style="border-bottom: 0px;" href="javascript:vote(286112,1702636,'pos');">
+                                        <img width="13" src="/images/design/feedback_pos.png">
+                                      <a style="border-bottom: 0px;" href="javascript:vote(286112,1702636,'neg');">
+                                        <img width="13" src="/images/design/feedback_neg.png">
+                              <tr>
+                                <td colspan="2">
+                                <td colspan="14">
+                                  <div id="fh_1702638" style="padding: 3px;  background-color: #d8d8d8;">
+                                    <a name="fe_1702638">
+                                    <font class="entry_info">
+                                      <b>
+                                        "Re: hmm.. nechcel by som..."
+                                      <br>
+                                      ~"aa: aaa144 | aaaaaaa: 29.10.2026 9:33"
+                                      <br>
+                                  <font class="entry_info">
+                                  <br>
+                                  [163 chars]
+                                  <br>
+                                  <div style="valign: middle;">
+                                    <a class="entry_link" style="border-bottom: 0px; color: #808080;" href="article_forum.php?action=reply&forum=286112&entry_id=1702638&url=http%3A%2F%2Fwww.dsl.sk%2Farticle.php%3Farticle%3D34004">
+                                      "Odpovedať"
+                                    <span id="vt_1702638">
+                                      <font class="entry_link" style="color: #808080;">
+                                        "Hodnotiť:"
+                                      <a style="border-bottom: 0px;" href="javascript:vote(286112,1702638,'pos');">
+                                        <img width="13" src="/images/design/feedback_pos.png">
+                                      <a style="border-bottom: 0px;" href="javascript:vote(286112,1702638,'neg');">
+                                        <img width="13" src="/images/design/feedback_neg.png">
+                              <tr>
+                                <td colspan="3">
+                                <td colspan="13">
+                                  <div id="fh_1702640" style="padding: 3px;  background-color: #d8d8d8;">
+                                    <a name="fe_1702640">
+                                    <font class="entry_info">
+                                      <b>
+                                        "ultraradikálny konsenzualizmus"
+                                      <br>
+                                      ~"aa: aaaaaaaaaaaaaaa, . a | aaaaaaa: 29.10.2026 9:35"
+                                      <br>
+                                  <font class="entry_info">
+                                  <br>
+                                  ~"aaaaaa aaa. aaaaaaa aaaaaaaaaa. aaaaa aaaaaaaaa aaaaa aaaaaaa aaaaaaaa."
+                                  <br>
+                                  <div style="valign: middle;">
+                                    <a class="entry_link" style="border-bottom: 0px; color: #808080;" href="article_forum.php?action=reply&forum=286112&entry_id=1702640&url=http%3A%2F%2Fwww.dsl.sk%2Farticle.php%3Farticle%3D34004">
+                                      "Odpovedať"
+                                    <span id="vt_1702640">
+                                      <font class="entry_link" style="color: #808080;">
+                                        "Hodnotiť:"
+                                      <a style="border-bottom: 0px;" href="javascript:vote(286112,1702640,'pos');">
+                                        <img width="13" src="/images/design/feedback_pos.png">
+                                      <a style="border-bottom: 0px;" href="javascript:vote(286112,1702640,'neg');">
+                                        <img width="13" src="/images/design/feedback_neg.png">
+                              <tr>
+                                <td colspan="1">
+                                <td colspan="15">
+                                  <div id="fh_1702642" style="padding: 3px;  background-color: #d8d8d8;">
+                                    <a name="fe_1702642">
+                                    <font class="entry_info">
+                                      <b>
+                                        "Drill baby drill kde?"
+                                      <br>
+                                      ~"aa: aaa_ | aaaaaaa: 29.10.2026 9:48"
+                                      <br>
+                                  <font class="entry_info">
+                                  <br>
+                                  ~"aaaaaaa aaaaaa? a aaa aa aaaaa aaaa aaaaa? aaa aaa aa aaa aa aa aaaaaa..."
+                                  <br>
+                                  <div style="valign: middle;">
+                                    <a class="entry_link" style="border-bottom: 0px; color: #808080;" href="article_forum.php?action=reply&forum=286112&entry_id=1702642&url=http%3A%2F%2Fwww.dsl.sk%2Farticle.php%3Farticle%3D34004">
+                                      "Odpovedať"
+                                    <span id="vt_1702642">
+                                      <font class="entry_link" style="color: #808080;">
+                                        "Hodnotiť:"
+                                      <a style="border-bottom: 0px;" href="javascript:vote(286112,1702642,'pos');">
+                                        <img width="13" src="/images/design/feedback_pos.png">
+                                      <a style="border-bottom: 0px;" href="javascript:vote(286112,1702642,'neg');">
+                                        <img width="13" src="/images/design/feedback_neg.png">
+                          <br>
+                          <a href="article_forum.php?action=reply&forum=286112&url=%2Farticle.php%3Farticle%3D34004">
+                            "Pridať komentár"
+                    <tr>
+                      <td valign="bottom">
+                        <br>
+                        <br>
+                <div id="footer" style="text-align: center;">
+                  <a href="visitors.php">
+                    "NÁVŠTEVNOSŤ"
+                  "|"
+                  <a href="advertising.php">
+                    "INZERCIA"
+                  <br>
+                  ~"(a) 2004, 2005 aaa.aa | aaaaaa aaaaa aaaaaaaaa. | aaaaaaa: aaaaa @ aaa.aa"
+                  <br>
+                  ~"aaaaaa aaaaaaa aaaaaaaaaa aa aaa aaaaaa."
+            <td valign="top" style="padding-left: 8px; padding-top: 150px;">
