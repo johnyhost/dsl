@@ -292,8 +292,55 @@ object DslParser {
             bodyHtml = body,
             bodyTextLength = bodyText.length,
             leadInBody = leadInBody,
+            comments = parseComments(doc, doc.location().ifEmpty { url }),
+            addCommentUrl = doc.select("a[href*=article_forum.php]")
+                .firstOrNull { !it.attr("href").contains("entry_id") }
+                ?.absUrl("href")?.takeIf { it.isNotEmpty() },
         )
     }
+
+    private val COMMENT_AUTHOR = Regex("""Od:\s*(.+?)\s*(?:\||$)""")
+    private val COMMENT_SCORE = Regex("""Známka:\s*(-?\d+(?:[.,]\d+)?)""")
+
+    /**
+     * Discussion markup (2026): a 16-column table; each entry's row starts with a spacer
+     * `<td colspan=depth+1>`, then `<td>` holding `div#fh_ID` (title + "Od: … | Pridané: …"),
+     * the text, and a footer div with "Odpovedať" and "Známka".
+     */
+    fun parseComments(doc: Document, baseUrl: String): List<Comment> =
+        doc.select("div[id^=fh_]").mapNotNull { head ->
+            val id = head.id().removePrefix("fh_")
+            val cell = head.parent() ?: return@mapNotNull null
+            val spacer = cell.previousElementSibling()
+            val depth = ((spacer?.attr("colspan")?.toIntOrNull() ?: 1) - 1).coerceIn(0, 15)
+
+            val info = head.selectFirst(".entry_info") ?: head
+            val title = clean(info.selectFirst("b")?.text().orEmpty())
+            val meta = clean(info.ownText())
+            val author = COMMENT_AUTHOR.find(meta)?.groupValues?.get(1)?.takeIf { it.isNotEmpty() }
+            val date = DATE_FULL.find(meta)?.value
+
+            // The text is everything between the header and the footer div.
+            val text = Element("div")
+            var n = head.nextSibling()
+            while (n != null) {
+                if (n is Element && n.tagName() == "div" && n.selectFirst("a.entry_link, [id^=vt_]") != null) break
+                if (!(n is Element && n.hasClass("entry_info") && !n.hasText())) text.appendChild(n.clone())
+                n = n.nextSibling()
+            }
+            val score = cell.selectFirst("[id=vt_$id]")?.text()
+                ?.let { COMMENT_SCORE.find(it)?.groupValues?.get(1)?.replace(',', '.')?.toDoubleOrNull() }
+
+            Comment(
+                id = id,
+                title = title,
+                author = author,
+                date = date,
+                bodyHtml = cleanBody(listOf(text), baseUrl, null),
+                depth = depth,
+                score = score,
+            )
+        }
 
     private fun articleTitle(doc: Document): String {
         val raw = doc.selectFirst(".article_title, .page_title")?.text()

@@ -66,6 +66,10 @@ class LiveSiteTest {
                 line("perex:  ${a.perex?.take(60)}… (${a.perex?.length ?: 0} chars), leadInBody=${a.leadInBody}")
                 line("body:   ${a.bodyTextLength} chars, <p>=${a.bodyHtml.split("<p>").size - 1}, " +
                     "figures=${a.bodyHtml.split("<figure").size - 1}, videos=${a.bodyHtml.split("class=\"video\"").size - 1}")
+                line("comments: ${a.comments.size} (listed ${item.comments ?: 0}), depths=${a.comments.map { it.depth }}, " +
+                    "with author=${a.comments.count { it.author != null }}, date=${a.comments.count { it.date != null }}, " +
+                    "score=${a.comments.count { it.score != null }}, empty text=${a.comments.count { it.bodyHtml.isBlank() }}, " +
+                    "add link=${a.addCommentUrl != null}")
             }
         }
         File(out, "report.txt").writeText(report.toString())

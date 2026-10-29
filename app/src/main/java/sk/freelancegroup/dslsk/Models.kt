@@ -31,6 +31,25 @@ data class Article(
     val bodyTextLength: Int,
     /** True when the first body paragraph doubles as the perex (styled as the lead). */
     val leadInBody: Boolean = false,
+    /** The discussion under the article, in page order (replies follow their parent). */
+    val comments: List<Comment> = emptyList(),
+    /** "Pridať komentár" on the website (posting needs a dsl.sk login). */
+    val addCommentUrl: String? = null,
+)
+
+/** One discussion entry. */
+data class Comment(
+    val id: String,
+    val title: String,
+    val author: String?,
+    /** As shown on the site, e.g. "28.10.2026 19:42". */
+    val date: String?,
+    /** Sanitised HTML of the comment text. */
+    val bodyHtml: String,
+    /** 0 = top level, 1 = reply, 2 = reply to a reply, … */
+    val depth: Int,
+    /** The site's "Známka" (rating), if shown. */
+    val score: Double?,
 )
 
 /** "1 komentár", "3 komentáre", "7 komentárov". */

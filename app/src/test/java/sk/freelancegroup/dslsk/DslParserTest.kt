@@ -81,6 +81,27 @@ class DslParserTest {
     }
 
     @Test
+    fun article_comments() {
+        val url = "https://www.dsl.sk/article.php?article=33996"
+        val a = DslParser.parseArticle(load("article.html", url), url)
+        assertEquals(listOf(0, 1, 2), a.comments.map { it.depth })
+        val first = a.comments[0]
+        assertEquals("Pásky sú stále najlacnejšie", first.title)
+        assertEquals("technik", first.author)
+        assertEquals("28.10.2026 19:42", first.date)
+        assertEquals(7.5, first.score!!, 0.001)
+        assertTrue(first.bodyHtml.contains("Hlavne pri desiatkach TB."))
+        assertEquals(2, first.bodyHtml.split("<p>").size - 1)
+        assertFalse(first.bodyHtml.contains("Odpoveda"))
+        assertEquals(-10.0, a.comments[1].score!!, 0.001)
+        assertEquals("29.10.2026 6:15", a.comments[2].date)
+        assertEquals(null, a.comments[2].score)
+        assertTrue(a.comments[2].bodyHtml.contains("https://www.dsl.sk/article.php?article=33900"))
+        assertTrue(a.addCommentUrl!!.startsWith("https://www.dsl.sk/article_forum.php?action=reply"))
+        assertFalse(a.addCommentUrl!!.contains("entry_id"))
+    }
+
+    @Test
     fun article_withoutClasses_fallsBackToHeuristics() {
         val url = "https://www.dsl.sk/article.php?article=34002"
         val a = DslParser.parseArticle(load("article_noclass.html", url), url)

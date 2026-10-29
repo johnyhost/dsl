@@ -1,6 +1,7 @@
 package sk.freelancegroup.dslsk
 
 import org.jsoup.nodes.Entities
+import java.time.LocalDate
 
 /** Wraps a parsed [Article] in a self-contained, phone-friendly HTML page (pure JVM, no Android). */
 object ArticleHtml {
@@ -13,6 +14,45 @@ object ArticleHtml {
 
     private fun esc(s: String) = Entities.escape(s)
 
+    /**
+     * The discussion as a collapsed <details> block (expands without JavaScript).
+     * [listedComments] is the count from the news list, used only if parsing found none.
+     */
+    private fun discussion(article: Article, listedComments: Int?): String {
+        val add = article.addCommentUrl ?: article.id?.let(DslParser::discussionUrl)
+        val addLink = add?.let { "<a class=\"discuss\" href=\"${esc(it)}\">Pridať komentár na webe <span>→</span></a>" }.orEmpty()
+        if (article.comments.isEmpty()) {
+            // Either no comments yet, or a layout we couldn't read: then link to the web.
+            val n = listedComments ?: 0
+            val id = article.id ?: return addLink
+            return if (n > 0) "<a class=\"discuss\" href=\"${esc(DslParser.discussionUrl(id))}\">Diskusia · ${commentsLabel(n)} <span>→</span></a>"
+            else addLink
+        }
+        val year = ".${LocalDate.now(DslParser.ZONE).year}"
+        val entries = article.comments.joinToString("\n") { c ->
+            val indent = minOf(c.depth, 5) * 14
+            val classes = buildString {
+                append("c")
+                if (c.depth > 0) append(" reply")
+                if ((c.score ?: 0.0) <= -5.0) append(" low")
+            }
+            val title = c.title.takeIf { it.isNotEmpty() && !it.startsWith("Re:", ignoreCase = true) }
+                ?.let { "<div class=\"c-title\">${esc(it)}</div>" }.orEmpty()
+            val meta = listOfNotNull(
+                c.author?.let { "<b>${esc(it)}</b>" },
+                c.date?.replace(year, ".")?.let(::esc),
+                c.score?.takeIf { it != 0.0 }?.let { sc ->
+                    val txt = if (sc % 1.0 == 0.0) "%+d".format(sc.toInt()) else "%+.1f".format(sc)
+                    "<span class=\"score ${if (sc > 0) "pos" else "neg"}\">$txt</span>"
+                },
+            ).joinToString(" · ")
+            "<div class=\"$classes\" style=\"margin-left:${indent}px\">$title<div class=\"c-meta\">$meta</div>" +
+                "<div class=\"c-body\">${c.bodyHtml}</div></div>"
+        }
+        return "<details class=\"disc\"><summary>Diskusia · ${commentsLabel(article.comments.size)}<span class=\"chev\"></span></summary>" +
+            "<div class=\"thread\">$entries</div>$addLink</details>"
+    }
+
     fun render(article: Article, comments: Int?, palette: Palette): String {
         val (bg, fg, muted, accent, rule, chip) = palette
 
@@ -20,10 +60,7 @@ object ArticleHtml {
             article.tags.joinToString("", "<div class=\"tags\">", "</div>") { "<span>${esc(it)}</span>" }
         val byline = article.byline?.let { "<div class=\"meta\">${esc(it)}</div>" }.orEmpty()
         val perex = article.perex?.let { "<p class=\"perex\">${esc(it)}</p>" }.orEmpty()
-        val discussion = article.id?.let { id ->
-            val label = comments?.let { "Diskusia · ${commentsLabel(it)}" } ?: "Diskusia"
-            "<a class=\"discuss\" href=\"${esc(DslParser.discussionUrl(id))}\">$label <span>→</span></a>"
-        }.orEmpty()
+        val discussion = discussion(article, comments)
 
         return """
 <!doctype html>
@@ -66,6 +103,25 @@ object ArticleHtml {
   a.discuss { display: block; margin-top: 30px; padding: 15px 18px; border-radius: 14px; background: $chip;
               color: $fg; font-weight: 600; text-decoration: none; }
   a.discuss span { float: right; color: $accent; }
+  details.disc { margin-top: 30px; }
+  details.disc > summary { list-style: none; display: block; padding: 15px 18px; border-radius: 14px;
+                           background: $chip; font-weight: 600; }
+  details.disc > summary::-webkit-details-marker { display: none; }
+  details.disc > summary .chev::after { content: "▾"; float: right; color: $accent; }
+  details.disc[open] > summary .chev::after { content: "▴"; }
+  details.disc a.discuss { margin-top: 18px; }
+  .thread { margin-top: 8px; }
+  .c { padding: 12px 0 10px; border-bottom: 1px solid $rule; }
+  .c.reply { padding-left: 12px; border-left: 2px solid $rule; }
+  .c.low { opacity: .55; }
+  .c-title { font-weight: 600; font-size: 15px; line-height: 1.35; }
+  .c-meta { color: $muted; font-size: 12.5px; margin: 2px 0 6px; }
+  .c-meta b { color: $fg; font-weight: 600; }
+  .score.pos { color: $accent; font-weight: 600; }
+  .c-body { font-size: 15.5px; line-height: 1.5; }
+  .c-body p { margin: 0 0 .6em; }
+  .c-body p:last-child { margin-bottom: 0; }
+  .c-body img { display: inline; margin: 0; border-radius: 0; }
 </style>
 </head><body>
 $byline
