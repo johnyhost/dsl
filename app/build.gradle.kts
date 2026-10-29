@@ -20,8 +20,8 @@ android {
         applicationId = "sk.freelancegroup.dslsk"
         minSdk = 26          // Android 8.0
         targetSdk = 35       // Android 15
-        versionCode = 3      // the 2012 app was versionCode 2 / 1.1
-        versionName = "2.0"
+        versionCode = 4      // the 2012 app was versionCode 2 / 1.1
+        versionName = "2.1"
     }
 
     signingConfigs {

@@ -299,7 +299,7 @@ object DslParser {
         )
     }
 
-    private val COMMENT_AUTHOR = Regex("""Od:\s*(.+?)\s*(?:\||$)""")
+    private val COMMENT_AUTHOR = Regex("""Od[^:|]{0,8}:\s*(.+?)\s*(?:\||$)""") // "Od:" or "Od reg.:"
     private val COMMENT_SCORE = Regex("""Známka:\s*(-?\d+(?:[.,]\d+)?)""")
 
     /**

@@ -95,6 +95,7 @@ class DslParserTest {
         assertFalse(first.bodyHtml.contains("Odpoveda"))
         assertEquals(-10.0, a.comments[1].score!!, 0.001)
         assertEquals("29.10.2026 6:15", a.comments[2].date)
+        assertEquals("technik_", a.comments[2].author) // registered users: "Od reg.:"
         assertEquals(null, a.comments[2].score)
         assertTrue(a.comments[2].bodyHtml.contains("https://www.dsl.sk/article.php?article=33900"))
         assertTrue(a.addCommentUrl!!.startsWith("https://www.dsl.sk/article_forum.php?action=reply"))

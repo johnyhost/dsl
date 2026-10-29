@@ -10,7 +10,10 @@ I rebuilt it by decompiling the old APK.
   grouped by day, with the perex, time and comment count. Articles you've opened are greyed out.
 - **Article view**: a reader layout with title, date, tags, a bold perex, paragraphs, pictures with captions,
   and YouTube embeds as tappable thumbnails. **A− / A+** sets the text size (remembered). **Share** and
-  **open in browser** are in the top bar, and a "Diskusia" link at the bottom opens the comments on the web.
+  **open in browser** are in the top bar.
+- **Discussion**: the comments are shown under the article as a collapsible thread, with author, date,
+  rating and nested replies. Low-rated comments are dimmed. Posting a comment opens the website, because
+  it needs a dsl.sk login.
 - Follows the system **dark mode**. If the parser ever fails on an article, the app shows the original page
   instead of an empty screen.
 
