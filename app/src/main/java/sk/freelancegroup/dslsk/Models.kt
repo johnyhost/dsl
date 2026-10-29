@@ -31,6 +31,10 @@ data class Article(
     val bodyTextLength: Int,
     /** True when the first body paragraph doubles as the perex (styled as the lead). */
     val leadInBody: Boolean = false,
+    /** Short teaser for lists (perex, or the opening paragraph). */
+    val summary: String? = null,
+    /** From the byline; noon when the site gives only a date. */
+    val publishedAt: Long? = null,
     /** The discussion under the article, in page order (replies follow their parent). */
     val comments: List<Comment> = emptyList(),
     /** "Pridať komentár" on the website (posting needs a dsl.sk login). */
@@ -57,4 +61,11 @@ fun commentsLabel(n: Int): String = when {
     n == 1 -> "1 komentár"
     n in 2..4 -> "$n komentáre"
     else -> "$n komentárov"
+}
+
+/** "1 záložka", "3 záložky", "7 záložiek". */
+fun bookmarksLabel(n: Int): String = when {
+    n == 1 -> "1 záložka"
+    n in 2..4 -> "$n záložky"
+    else -> "$n záložiek"
 }

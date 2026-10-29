@@ -228,6 +228,12 @@ object DslParser {
         return SegmentMeta(date, perex, comments)
     }
 
+    /** First date in [text] ("28.10.2026 19:42", "28.10. 19:42", "DSL.sk, 28.10.2026"), as epoch millis. */
+    fun dateFromText(text: String, today: LocalDate = LocalDate.now(ZONE)): Long? {
+        val m = listOfNotNull(DATE_FULL.find(text), DATE_SHORT.find(text)).minByOrNull { it.range.first } ?: return null
+        return parseDate(m, today)
+    }
+
     private fun parseDate(m: MatchResult, today: LocalDate): Long? = runCatching {
         val g = m.groupValues
         val dt: LocalDateTime = if (m.value.count { it == '.' } >= 2 && g.size == 6 && g[3].length == 4) {
@@ -292,6 +298,8 @@ object DslParser {
             bodyHtml = body,
             bodyTextLength = bodyText.length,
             leadInBody = leadInBody,
+            summary = (perex ?: firstPara)?.let { if (it.length > 320) it.take(317).trimEnd() + "…" else it },
+            publishedAt = byline?.let { dateFromText(it) },
             comments = parseComments(doc, doc.location().ifEmpty { url }),
             addCommentUrl = doc.select("a[href*=article_forum.php]")
                 .firstOrNull { !it.attr("href").contains("entry_id") }

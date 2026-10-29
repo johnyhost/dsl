@@ -21,6 +21,14 @@
     <string name="error_empty">Na stránke sa nenašli žiadne správy. Možno sa zmenil jej vzhľad – skúste ju otvoriť v prehliadači.</string>
     <string name="fallback_notice">Článok sa nepodarilo upraviť, zobrazujem pôvodnú stránku.</string>
     <string name="no_browser">Nenašiel sa prehliadač.</string>
+    <string name="bookmarks">Záložky</string>
+    <string name="show_bookmarks">Zobraziť záložky</string>
+    <string name="show_all">Zobraziť všetky správy</string>
+    <string name="bookmark_add">Pridať do záložiek</string>
+    <string name="bookmark_remove">Odobrať zo záložiek</string>
+    <string name="bookmark_added">Pridané do záložiek</string>
+    <string name="bookmark_removed">Odobrané zo záložiek</string>
+    <string name="bookmarks_empty">Zatiaľ nemáte žiadne záložky.\n\nV článku ťuknite na ☆ hore, alebo v zozname podržte prst na správe.</string>
     <string name="today">Dnes</string>
     <string name="yesterday">Včera</string>
 </resources>

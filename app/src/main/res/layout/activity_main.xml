@@ -78,6 +78,19 @@
             android:layout_gravity="center"
             android:visibility="gone" />
 
+        <TextView
+            android:id="@+id/bookmarksEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:lineSpacingExtra="3sp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="@string/bookmarks_empty"
+            android:textColor="@color/muted"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
         <include layout="@layout/error_box" />
     </FrameLayout>
 </LinearLayout>

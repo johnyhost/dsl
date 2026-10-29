@@ -14,6 +14,9 @@ I rebuilt it by decompiling the old APK.
 - **Discussion**: the comments are shown under the article as a collapsible thread, with author, date,
   rating and nested replies. Low-rated comments are dimmed. Posting a comment opens the website, because
   it needs a dsl.sk login.
+- **Bookmarks**: tap ☆ in an article (or long-press a headline in the list) to save it. The ☆ in the
+  list's top bar switches to "bookmarks only"; Back returns to all news. Bookmarks are stored on the phone,
+  with title and summary, so they stay listed after the article drops off dsl.sk's news pages.
 - Follows the system **dark mode**. If the parser ever fails on an article, the app shows the original page
   instead of an empty screen.
 
@@ -24,6 +27,7 @@ I rebuilt it by decompiling the old APK.
 | `DslParser.kt` | Turns dsl.sk HTML into a news list / article. It tries the site's known CSS classes first (`article_body`, `article_perex`, the same ones the 2012 app used), then falls back to structural heuristics. Pure JVM, so it can be unit-tested. |
 | `Http.kt` | Downloads pages and detects the charset (header → `<meta>` → UTF-8 → windows-1250). |
 | `FeedRepository.kt` | Keeps the loaded list in memory and handles paging. |
+| `Bookmarks.kt` | Starred articles, saved as JSON in the app's private settings. |
 | `MainActivity.kt`, `FeedAdapter.kt` | The list screen. |
 | `ArticleActivity.kt`, `ArticleHtml.kt` | The article screen: sanitised HTML in a WebView with JavaScript off. |
 

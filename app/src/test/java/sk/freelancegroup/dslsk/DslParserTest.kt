@@ -81,6 +81,17 @@ class DslParserTest {
     }
 
     @Test
+    fun article_summaryAndDate_forBookmarks() {
+        val url = "https://www.dsl.sk/article.php?article=33996"
+        val a = DslParser.parseArticle(load("article.html", url), url)
+        assertTrue(a.summary!!.startsWith("Dopyt po magnetických"))
+        assertEquals("28.10.2026 12:00", fmt(a.publishedAt))
+        assertEquals("28.10.2026 19:35", fmt(DslParser.dateFromText(", 28.10. 19:35,", today)))
+        assertEquals("26.10.2026 09:43", fmt(DslParser.dateFromText("26.10.2026 09:43, DSL.sk", today)))
+        assertEquals(null, DslParser.dateFromText("bez dátumu", today))
+    }
+
+    @Test
     fun article_comments() {
         val url = "https://www.dsl.sk/article.php?article=33996"
         val a = DslParser.parseArticle(load("article.html", url), url)

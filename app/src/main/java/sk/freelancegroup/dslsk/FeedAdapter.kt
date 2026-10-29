@@ -1,6 +1,9 @@
 package sk.freelancegroup.dslsk
 
 import android.content.Context
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +15,19 @@ import java.time.ZonedDateTime
 
 class FeedAdapter(
     private val context: Context,
-    private val items: List<FeedItem>,
+    /** Either the live news list or the bookmarks; swap it and call notifyDataSetChanged(). */
+    var items: List<FeedItem>,
     private val prefs: Prefs,
+    private val bookmarks: Bookmarks,
 ) : BaseAdapter() {
 
     private var readIds: Set<Int> = prefs.readIds()
+    private var starredIds: Set<Int> = bookmarks.ids()
 
-    fun refreshReadState() {
+    /** Re-reads which articles are opened / bookmarked and redraws. */
+    fun refreshMarks() {
         readIds = prefs.readIds()
+        starredIds = bookmarks.ids()
         notifyDataSetChanged()
     }
 
@@ -57,10 +65,17 @@ class FeedAdapter(
         h.perex.visibility = if (item.perex.isNullOrBlank()) View.GONE else View.VISIBLE
         h.perex.text = item.perex
 
-        val meta = listOfNotNull(
+        val meta = SpannableStringBuilder()
+        if (item.id in starredIds) {
+            meta.append("★", ForegroundColorSpan(context.getColor(R.color.accent)), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+        listOfNotNull(
             item.publishedAt?.let(::timeLabel)?.takeIf { it.isNotEmpty() },
             item.comments?.let { commentsLabel(it) },
-        ).joinToString("  ·  ")
+        ).forEach { part ->
+            if (meta.isNotEmpty()) meta.append(if (meta.length == 1 && item.id in starredIds) "  " else "  ·  ")
+            meta.append(part)
+        }
         h.meta.visibility = if (meta.isEmpty()) View.GONE else View.VISIBLE
         h.meta.text = meta
         return view
