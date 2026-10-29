@@ -80,7 +80,10 @@ class LiveSiteTest {
         "  [${i.id}] ${i.publishedAt?.let { java.time.Instant.ofEpochMilli(it) } ?: "-"} c=${i.comments ?: "-"} " +
             "| ${i.title} | perex=${i.perex?.length ?: 0} chars"
 
-    /** Indented tag tree; text longer than 30 characters is replaced by its length. */
+    /**
+     * Indented tag tree. Text up to 30 characters is kept; up to 80 characters it keeps
+     * its shape (digits, punctuation) with letters masked; longer text becomes its length.
+     */
     private fun skeleton(doc: Document): String {
         val sb = StringBuilder()
         fun walk(n: Node, depth: Int) {
@@ -88,10 +91,15 @@ class LiveSiteTest {
             when (n) {
                 is TextNode -> {
                     val t = n.text().trim()
-                    if (t.isNotEmpty()) sb.append(pad).append(if (t.length <= 30) "\"$t\"" else "[${t.length} chars]").append('\n')
+                    val shown = when {
+                        t.length <= 30 -> "\"$t\""
+                        t.length <= 80 -> "~\"" + t.map { c -> if (c.isLetter()) 'a' else c }.joinToString("") + "\""
+                        else -> "[${t.length} chars]"
+                    }
+                    if (t.isNotEmpty()) sb.append(pad).append(shown).append('\n')
                 }
                 is Element -> {
-                    val attrs = n.attributes().filter { it.key in setOf("class", "id", "name", "href", "src", "property", "content", "charset", "http-equiv") }
+                    val attrs = n.attributes().filter { it.key in setOf("class", "id", "name", "href", "src", "property", "content", "charset", "http-equiv", "colspan", "rowspan", "width", "style", "align", "valign") }
                         .joinToString("") { a ->
                             val v = if (a.key == "content" && a.value.length > 60) "[${a.value.length} chars]" else a.value.take(120)
                             " ${a.key}=\"$v\""
