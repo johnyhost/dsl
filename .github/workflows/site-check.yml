@@ -1,0 +1,51 @@
+name: Site check
+
+# Weekly check that the parser still understands dsl.sk. If the site's layout
+# changes, this run fails and GitHub emails you.
+on:
+  schedule:
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      snapshot:
+        description: "Push the page structure (no article text) to the site-snapshot branch"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Parse the live site
+        env:
+          DSL_LIVE: "1"
+          DSL_SNAPSHOT_DIR: ${{ github.workspace }}/site-snapshot
+        run: ./gradlew --no-daemon testDebugUnitTest --tests '*LiveSiteTest*'
+
+      - name: Report
+        if: always()
+        run: |
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat site-snapshot/report.txt >> "$GITHUB_STEP_SUMMARY" || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Push structure snapshot
+        if: always() && inputs.snapshot
+        run: |
+          cd site-snapshot
+          git init -q -b site-snapshot
+          git add -A
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" commit -qm "dsl.sk structure snapshot"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" site-snapshot

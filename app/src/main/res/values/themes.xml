@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light/dark parent is swapped in values-night. Only framework themes: no AndroidX needed. -->
+    <style name="Base.AppTheme" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- API 26 can't draw dark navigation-bar icons, so keep a scrim behind them. -->
+    <style name="Platform.AppTheme" parent="Base.AppTheme">
+        <item name="android:navigationBarColor">@color/navbar_scrim</item>
+    </style>
+
+    <style name="AppTheme" parent="Platform.AppTheme">
+        <item name="android:colorPrimary">@color/bar</item>
+        <item name="android:colorPrimaryDark">@color/bar</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:colorControlNormal">@color/icon</item>
+        <item name="android:colorControlActivated">@color/accent</item>
+        <item name="android:colorBackground">@color/bg</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:textColorPrimary">@color/fg</item>
+        <item name="android:textColorSecondary">@color/muted</item>
+        <item name="android:actionMenuTextColor">@color/fg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">@bool/light_bars</item>
+    </style>
+</resources>

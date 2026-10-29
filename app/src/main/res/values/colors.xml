@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#FBFBFB</color>
+    <color name="bar">#EEEEEE</color>
+    <color name="fg">#1D1C21</color>
+    <color name="read">#8A8990</color>
+    <color name="muted">#5D5C66</color>
+    <color name="muted2">#85848D</color>
+    <color name="accent">#2E1A8F</color>
+    <color name="brand">#210D79</color>
+    <color name="rule">#E2E1E6</color>
+    <color name="chip">#EDEBF5</color>
+    <color name="icon">#3B3A42</color>
+    <color name="navbar_scrim">#66000000</color>
+</resources>

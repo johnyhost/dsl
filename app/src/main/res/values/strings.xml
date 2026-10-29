@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DSL.sk</string>
+    <string name="tagline">digitálny svet pod lupou</string>
+    <string name="refresh">Obnoviť</string>
+    <string name="open_web">Otvoriť dsl.sk v prehliadači</string>
+    <string name="open_in_browser">Otvoriť v prehliadači</string>
+    <string name="share">Zdieľať</string>
+    <string name="back">Späť</string>
+    <string name="text_smaller">A−</string>
+    <string name="text_smaller_desc">Zmenšiť písmo</string>
+    <string name="text_larger">A+</string>
+    <string name="text_larger_desc">Zväčšiť písmo</string>
+    <string name="retry">Skúsiť znova</string>
+    <string name="loading_more">Načítavam staršie správy…</string>
+    <string name="load_more_failed">Staršie správy sa nepodarilo načítať. Ťuknite pre opakovanie.</string>
+    <string name="end_of_list">To je všetko.</string>
+    <string name="error_offline">Nie ste pripojený na internet.</string>
+    <string name="error_generic">DSL.sk sa nepodarilo načítať.</string>
+    <string name="error_article">Článok sa nepodarilo načítať.</string>
+    <string name="error_empty">Na stránke sa nenašli žiadne správy. Možno sa zmenil jej vzhľad – skúste ju otvoriť v prehliadači.</string>
+    <string name="fallback_notice">Článok sa nepodarilo upraviť, zobrazujem pôvodnú stránku.</string>
+    <string name="no_browser">Nenašiel sa prehliadač.</string>
+    <string name="today">Dnes</string>
+    <string name="yesterday">Včera</string>
+</resources>

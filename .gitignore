@@ -1,0 +1,16 @@
+.gradle/
+build/
+/app/build/
+local.properties
+.idea/
+*.iml
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signing key: never commit (public repo). Keep your own backup.
+keystore.properties
+keystore/
+*.jks
+*.keystore
